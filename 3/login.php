@@ -4,8 +4,7 @@ define("server", "localhost:3306");
 define("uname", "root");
 define("pwd", "abcde123");
 define("db", "prac");
-
-$connection = mysqli_connect($server, $uname, $pwd, $db);
+$connection = mysqli_connect(server, uname, pwd, db);
 session_start();
 
 if (isset($_POST['submit'])) {
@@ -14,7 +13,7 @@ if (isset($_POST['submit'])) {
 	
 	$sql = "SELECT * from xyz where username='$username' and password='$password'";
 	
-	$result = mysqli_query($sql);
+	$result = mysqli_query($connection,$sql);
 	
 	$count = mysqli_num_rows($result);
 
