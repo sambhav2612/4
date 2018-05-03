@@ -8,16 +8,16 @@ $connection = mysqli_connect(server, uname, pwd, db);
 session_start();
 
 if (isset($_POST['submit'])) {
-	$username = mysqli_real_escape_string($db, $_POST['username']);
-	$password = mysqli_real_escape_string($db, $_POST['password']);
+	$username = mysqli_real_escape_string($db, trim($_POST['username']));
+	$password = mysqli_real_escape_string($db, trim($_POST['password']));
 	
 	$sql = "SELECT * from xyz where username='$username' and password='$password'";
 	
 	$result = mysqli_query($connection,$sql);
 	
-	$count = mysqli_num_rows($result);
-
-	if($count == 1) {
+	$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+	
+	if($row['username']==$username && $row['password']==$password) {
          session_register("username");
          session_register("password");
          
