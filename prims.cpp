@@ -15,7 +15,7 @@ int minKey(int key[], bool mstSet[])
    int min = INT_MAX, min_index;
  
    for (int v = 0; v < V; v++)
-     if (mstSet[v] == false && key[v] < min)
+     if (mstSet[v] == false && key[v] < min)    // false if not included
          min = key[v], min_index = v;
  
    return min_index;
@@ -37,7 +37,7 @@ void primMST(int graph[V][V])
      int key[V];   // Key values used to pick minimum weight edge in cut
      bool mstSet[V];  // To represent set of vertices not yet included in MST
  
-     // Initialize all keys as INFINITE
+     // Initialize all keys as INFINITE, and all nodes outside of mstSet
      for (int i = 0; i < V; i++)
         key[i] = INT_MAX, mstSet[i] = false;
  
